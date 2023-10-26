@@ -1,0 +1,66 @@
+:root {
+  --header-background: transparent;
+  --header-text-color: #091421;
+  --header-nav-margin: 20px;
+  --border-margin: solid 1px #091C44
+}
+
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--header-background);
+  z-index: 0;
+  top: 0;
+  margin-bottom: var(--border-margin);
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0;
+  color: var(--header-text-color);
+}
+
+nav {
+  margin-left: var(--header-nav-margin);
+  cursor: pointer;
+  color: var(--header-text-color);
+  text-decoration: none;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+section{
+  width: 100%;
+  height: 100vh;
+  background-color: yellow;
+  border-bottom: var(--border-margin);
+}
+.Stories-page {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  max-width: 100%; /* Ensure it doesn't exceed the viewport width */
+  white-space: nowrap; /* Prevent cards from wrapping to the next line */
+}
+
+.Stories-card {
+  display: inline-block; /* Keep cards inline */
+  background-color: rgba(255, 255, 255, 0.9);
+  padding-right: 200px;
+  padding-bottom: 80%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 10px; /* Space between cards */
+}
+
+/* Optional: Style for the content inside the card */
+.Stories-card p {
+  margin: 0;
+}
