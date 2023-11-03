@@ -1,0 +1,21 @@
+.navbar{
+  z-index: 0;
+  position: fixed;
+  background-color: transparent;
+  padding-bottom: 10px;
+  top: 0;
+}
+.navbar-brand{
+  font-family: serif;
+  font-weight: bold;
+  font-size: 3em !important;
+  margin-right: 100px;
+}
+.navbar-text{
+  margin-right: 12px;
+  font-size: 18px !important;
+  text-decoration: none !important;
+}
+.navbar-text:hover{
+  color: blue !important;
+}

@@ -1,0 +1,29 @@
+.card{
+  width: 20rem;
+}
+.card:hover{
+  box-shadow: 5px 10px 1px rgb(0, 0, 0,0.253) !important;
+}
+.card-body{
+  padding: 3rem 0 !important;
+  }
+.card-text{
+  font-size: 0.9rem;
+  padding: 0.4rem 1.9rem;
+}
+
+.container-fluid{
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  margin-bottom: 10px;
+}
+.Overflow{
+  overflow: hidden;
+}
+.trial-img-top{
+  transform: scale(1);
+  transition: transform 0.5s ease;
+}
+.trial-img-top:hover{
+  transform: scale(1.8);
+}

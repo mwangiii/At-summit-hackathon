@@ -1,160 +1,31 @@
 import './App.css';
-import {getFooterCopy, getFullYear} from './utils';
-import trialpic from './trialpic.jpg';
+import Stories from './stories';
+import Footer from './Footer';
+import NavBar from './NavBar';
+// import strongwoman from './assets/images/strongwoman.jpg';
+// import VolunteerForm from './volunteer';
 
 // function that returns the landing page
-function App() {
+function App () {
   return (
     <>
-    <header>
-      <div className='App-header'>
-        <h1>BraveGirls</h1>
-        <nav>Donate</nav>
-        <nav>Heroines</nav>
-        <nav>Volunteer</nav>
-        <nav>about us</nav>
-      </div>
-    </header>
-    <body>
-    <section>
-      <img src={trialpic} alt="trialpic"/>
-    </section>
-    <section>
-      <div className='Stories-page'>
-        <div className='Stories-card'>
-          <p>Card Content 1</p>
+      <header>
+        <div>
+          <NavBar />
         </div>
-        <div className='Stories-card'>
-          <p>Card Content 2</p>
-        </div>
-        <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>
-       <div className='Stories-card'>
-          <p>Card Content 3</p>
-        </div>      
-      </div>
-    </section>
-
-
-    <section>
-      <p>page3</p>
-    </section>
-    </body>
-      <div className='hr-bottom' />
-      <footer className='App-footer'>
-        <p>Copyright {getFullYear()} &ndash; {getFooterCopy(true)}</p>
+      </header>
+      <body>
+        <section className='landing-page'>
+        </section>
+        <section className='story-page'>
+          <Stories />
+        </section>
+      </body>
+      <footer>
+        <Footer />
       </footer>
     </>
-  )
+  );
 }
 
 export default App;
