@@ -1,0 +1,12 @@
+{
+    "env": {
+        "node": true,
+        "mocha": true
+    },
+    "plugins": ["chai-expect"],
+    "extends": ["eslint:recommended"],
+    "rules": {
+        "chai-expect/missing-assertion": 2,
+        "chai-expect/terminating-properties": 1
+    }
+}
