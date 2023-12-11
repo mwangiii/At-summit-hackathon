@@ -9,7 +9,7 @@ function getFooterCopy(isIndex){
     return 'Brave Girl Tales'
   }
   else{
-    return 'Brave Girl Heroines'
+    return 'Brave Girls Heroines'
   }
 }
 
