@@ -1,7 +1,7 @@
 .Hero{
   position: relative !important;
-  height:100% !important;
-  width: 100% !important;
+  max-width:100% !important;
+  max-height: 100% !important;
   z-index: 0 !important;
   top: 0 !important;
 }
@@ -11,7 +11,7 @@
   height: 100vh !important;
 }
 .Hero-image img{
-  width: 100% !important;
+  width:100% !important;
   height: 100vh !important;
   background-size: cover !important;
   background-position: center  !important;
@@ -39,7 +39,7 @@
   text-align: center !important;
 }
 .Hero-text h1{
-  font-size: 4rem !important;
+  font-size: 3.3rem !important;
   font-weight: 900 !important;
   font-family: sans-serif !important;
   text-transform: uppercase !important;
@@ -48,6 +48,6 @@
 
 @media screen and (max-width: 768px){
   .Hero-text h1{
-    font-size: 3rem !important;
+    font-size: 2rem !important;
   }
 }

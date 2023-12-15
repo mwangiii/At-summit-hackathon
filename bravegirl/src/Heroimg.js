@@ -5,7 +5,6 @@ import "./Heroimg.css";
 // import pic from './assets/images/pic.avif';
 // import enlightened from './assets/images/enlightened.jpg';
 // import strongwoman from './assets/images/strongwoman.jpg';
-import photo from './assets/images/photo.avif';
 
 
 export default function Heroimg(props) {
