@@ -10,17 +10,20 @@ datasource db {
   url = env("DATABASE_URL")
 }
 
+// Add a new enum type called Role
 enum Role {
   ADMIN
   USER
   AUTHOR
   DONOR
 }
+
 model User {
   id         Int      @id @default(autoincrement())
   username   String
   email      String   @unique
   password   String
+  role       Role     @default(USER) // Add a role field to represent the user's role
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   blogs      Blog[]   // Add a relation to represent blogs authored by the user
