@@ -1,10 +1,12 @@
 import './App.css';
 import NavBar from './NavBar';
 import Footer from './Footer';
-
-import Donate from './Donate';
+import Volunteer from './VolunteerPage';
+import Donate from './DonatePage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import Payment from './Paymentui';
 import Main from './Main';
+import HeroinList from './Heroins';
 
 
 // function that returns the landing page
@@ -16,9 +18,9 @@ function App() {
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/donate' element={<Donate/>}/>
-          {/* <Route path='/Heroin' element={<Heroin/>}/>
-          <Route path='/donate' element={<Donate/>}/> */}
-      </Routes>   
+          <Route path='/volunteer' element={<Volunteer isProfessional={true}/>}/>
+          <Route path='/heroins' element={<HeroinList/>}/>
+          </Routes>   
         <Footer/>
       </div>
     </Router>

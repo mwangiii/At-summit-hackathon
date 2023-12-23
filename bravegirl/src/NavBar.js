@@ -44,13 +44,13 @@ class NavBar extends Component {
             <Link to="/donate">Donate</Link>
           </span>
           <span className="navbar-link">
-          <Link to="/donate">Heroins</Link>
+          <Link to="/heroins">Heroins</Link>
           </span>
           <span className="navbar-link">
-          <Link to="/donate">Volunteer</Link>
+          <Link to="/volunteer">Volunteer</Link>
           </span>
           <span className="navbar-link">
-          <Link to="/donate">ABOUT US</Link>
+          <Link to="/about us">ABOUT US</Link>
           </span>
         </div>
         <div className="mobile-view" onClick={this.handleClick}>

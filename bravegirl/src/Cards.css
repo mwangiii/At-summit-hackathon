@@ -29,7 +29,7 @@
 
 /* styling for cards.js */
 .cards{
-  z-index: 2;
+  z-index: 0;
 }
 h3{
   text-align: center;
