@@ -6,17 +6,24 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const userData = {
-  username: 'freshuser88',
-  email: 'freshuser88@example.com',
+  username: 'freshestuse1',
+  email: 'freshesuse1@example.com',
+  password: 'password123'
+};
+
+const adminData = {
+  username: 'adminuser88',
+  email: 'admin.user@email.com',
   password: 'password123'
 };
 
 // Test for POST /api/v1/users/register
-describe('POST /api/v1/users/register', () => {
+describe('POST /api/v1/users/register', function() {
   let createdUserId; // Define createdUserId here to make it accessible in all hooks and tests
+  this.timeout(5000);
 
   // Before each test, create a new user
-  beforeEach(async () => {
+  beforeEach(async function() {
     const res = await request(app)
       .post('/api/v1/users/register')
       .send(userData);
@@ -29,7 +36,14 @@ describe('POST /api/v1/users/register', () => {
       throw new Error('User was not created');
     }
   });
+  // Test if user is retrieved
 
+  it('Should retrieve a user', async () => {
+    const res = await request(app).get(`/api/v1/users/${createdUserId}`);
+    expect(res.status).to.equal(200);
+    expect(res.body.user.username).to.equal(userData.username);
+    expect(res.body.user.role).to.equal('USER');
+  });
   //Test If Duplicate User is Created
   it('Should not create a duplicate user', async () => {
     const res = await request(app)
@@ -49,6 +63,45 @@ describe('POST /api/v1/users/register', () => {
   });
 });
 
+//  Test for POST /api/v1/users/create-admin
+describe('POST /api/v1/users/create-admin', () => {
+  let createdUserId; // Define createdUserId here to make it accessible in all hooks and tests
+  beforeEach(async () => {
+    const res = await request(app)
+      .post('/api/v1/users/create-admin')
+      .send(adminData);
+
+    if (res.body.user) {
+      createdUserId = res.body.user.id;
+      // Test if user is created
+      // console.log(res.body);
+      // console.log(res.body.user);
+      expect(res.body.user).to.be.an('object');
+    } else {
+      throw new Error('Admin was not created');
+    }
+  });
+  // Test if admin exists
+  it('Should get an admin', async () => {
+    const res = await request(app).get(`/api/v1/users/${createdUserId}`);
+    expect(res.status).to.equal(200);
+    // console.log(res.body);
+    // console.log(res.body.user);
+    console.log(res.body.user.role);
+    expect(res.body.user.role)
+    expect(res.body.user.role).to.equal('ADMIN');
+  });
+
+  // After each test, delete the user
+  afterEach(async () => {
+    if (createdUserId) {
+      await prisma.user.delete({
+        where: { id: createdUserId }
+      });
+    }
+  });
+}); 
+
 // Test GET /api/v1/users/
 describe('GET /api/v1/users/', () => {
 
@@ -56,6 +109,7 @@ describe('GET /api/v1/users/', () => {
   it('Should retrieve all users', async () => {
     const res = await request(app).get('/api/v1/users/');
     expect(res.status).to.equal(200);
+    expect(res.body.user).to.be.an('object')
   });
 
 });

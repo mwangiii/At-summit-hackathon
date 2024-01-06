@@ -55,6 +55,53 @@ router.post('/register', [
     }
 });
 
+// Create an Admin user
+router.post('/create-admin', [
+  body('username').isString(), 
+  body('email').isEmail(),
+  body('password').isLength({ min: 6}),
+], async(req, res) => {
+  //Check for validation errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+  }
+
+  try {
+    const { username, email, password } = req.body;
+    // Check if user already exists
+    const existingUser = await prisma.user.findUnique({ where: { email } });
+  
+    if (existingUser) {
+        return res.status(400).json({ error: 'User with this email already exists' });
+    }
+
+    // hash passwords
+    const hashedpassword = await bcrypt.hash(password, 10);
+
+    // create user in the database
+    const user = await prisma.user.create({
+        data: {
+            username,
+            email,
+            password: hashedpassword,
+            role: 'ADMIN',
+        },
+    });
+    
+  // Add links to the response
+  const links = {
+        login: '/api/v1/users/login',
+    };
+  
+    // Send response
+  res.status(200).json({user, links});
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Failed to create a new Admin' });
+  }
+});
+
 
 // LOGIN USER
 passport.use(new LocalStrategy({
@@ -96,11 +143,22 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
   // If this function gets called, authentication was successful.
   // `req.user` contains the authenticated user.
   const user = req.user;
+  if (user.role === 'ADMIN') {
+    const links = {
+      register: '/api/v1/users/update',
+      assign_role: '/api/v1/users/assign-role',
+      logout: '/api/v1/users/logout',
+      remove_user: '/api/v1/users/remove-user',
+    };
+  }
   const links = {
     register: '/api/v1/users/update',
+    logout: '/api/v1/users/logout',
   };
   res.json({ user, links });
 });
+
+// UPDATE USERS
 
 // change username 
 router.put('/change-username', async (req, res) => {
@@ -131,7 +189,6 @@ router.put('/change-username', async (req, res) => {
     return res.status(500).json({ error: 'Failed to update username' });
   }
 });
-
 
 // change password
 router.put('/change-password', async (req, res) => {
@@ -174,6 +231,52 @@ router.put('/change-password', async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Failed to update password' });
+  }
+});
+
+// assign role (only for admin)
+router.put('/assign-role', async (req, res) => {
+  const {role, userId} = req.body;
+  try {
+    // if current user is not an admin
+    if (req.user.role !== 'ADMIN') {
+      return res.status(403).json({ error: 'You are not authorized to perform this action' });
+    }
+    // update role in the database
+    const updatedUser = await prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        role,
+      },
+    });
+    // Send response
+    res.status(200).json({ message: 'Role assigned successfully', updatedUser });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Failed to assign role' });
+  }});
+
+// remove user (only for admin)
+router.delete('/remove-user', async (req, res) => {
+  const { userId } = req.body;
+  try {
+    // if current user is not an admin
+    if (req.user.role !== 'ADMIN') {
+      return res.status(403).json({ error: 'You are not authorized to perform this action' });
+    }
+    // delete user from the database
+    await prisma.user.delete({
+      where: {
+        id: userId,
+      },
+    });
+    // Send response
+    res.status(200).json({ message: 'User removed successfully' });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Failed to remove user' });
   }
 });
 
@@ -228,26 +331,26 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Google authentication route
-router.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile'] }));
+// // Google authentication route
+// router.get('/auth/google',
+//   passport.authenticate('google', { scope: ['profile'] }));
 
-router.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
+// router.get('/auth/google/callback', 
+//   passport.authenticate('google', { failureRedirect: '/login' }),
+//   function(req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect('/');
+//   });
 
-// Twitter authentication route
-router.get('/auth/twitter',
-  passport.authenticate('twitter'));
+// // Twitter authentication route
+// router.get('/auth/twitter',
+//   passport.authenticate('twitter'));
 
-router.get('/auth/twitter/callback', 
-  passport.authenticate('twitter', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
+// router.get('/auth/twitter/callback', 
+//   passport.authenticate('twitter', { failureRedirect: '/login' }),
+//   function(req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect('/');
+//   });
 
 module.exports = router;

@@ -137,7 +137,7 @@ None.
 
 None.
 
-#### Response
+#### Response - Example
 
 * If the request is successful, the response will be a JSON object with the following properties: 200 status code and user object.
 
