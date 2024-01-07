@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import './NavBar.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faWindowClose } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom';
+// import Donate from './Donate';
 
 class NavBar extends Component {
   state = { clicked: false, visible: false };
 
+  
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
   }
@@ -32,21 +35,22 @@ class NavBar extends Component {
 
     return (
       <nav className={navbarClass}>
-        <a className="navbar-brand" href="h#">
+        <a className="navbar-brand" href="/">
           BraveGirls
         </a>
         <div className={navbarTextClass} id="navbarText">
           <span className="navbar-link">
-            <a href="#">Donate</a>
+            {/* A link to the page Donate */}
+            <Link to="/donate">Donate</Link>
           </span>
           <span className="navbar-link">
-            <a href="#">Heroines</a>
+          <Link to="/heroins">Heroins</Link>
           </span>
           <span className="navbar-link">
-            <a href="#">Volunteer</a>
+          <Link to="/volunteer">Volunteer</Link>
           </span>
           <span className="navbar-link">
-            <a href="#">About Us</a>
+          <Link to="/about us">ABOUT US</Link>
           </span>
         </div>
         <div className="mobile-view" onClick={this.handleClick}>
