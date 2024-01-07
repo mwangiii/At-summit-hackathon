@@ -5,6 +5,16 @@ const passport = require('passport');
 
 // create express app
 const app = express();
+// Import route files
+const usersRoutes = require('./routes/v1/users');
+const blogRoutes = require('./routes/v1/blog');
+const volunteeropportunityRoutes = require('./routes/v1/volunteeropportunity');
+
+
+// mount route files
+app.use('/api/v1/users/', usersRoutes);
+app.use('/api/v1/blog/', blogRoutes);
+app.use('/api/v1/volunteeropportunity/', volunteeropportunityRoutes);
 
 // home route
 app.use('/', (req, res) => {
@@ -29,16 +39,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 // parse Json Bodies
 app.use(express.json());
-// Import route files
-const usersRoutes = require('./routes/v1/users');
-const blogRoutes = require('./routes/v1/blog');
-const volunteeropportunityRoutes = require('./routes/v1/volunteeropportunity');
-
-
-// mount route files
-app.use('/api/v1/users/', usersRoutes);
-app.use('/api/v1/blog/', blogRoutes);
-app.use('/api/v1/volunteeropportunity/', volunteeropportunityRoutes);
 
 // add logging middleware
 app.use((req, res, next) => {
