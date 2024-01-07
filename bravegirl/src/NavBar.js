@@ -35,7 +35,7 @@ class NavBar extends Component {
 
     return (
       <nav className={navbarClass}>
-        <a className="navbar-brand" href="h#">
+        <a className="navbar-brand" href="/">
           BraveGirls
         </a>
         <div className={navbarTextClass} id="navbarText">

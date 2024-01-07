@@ -1,10 +1,11 @@
+import './App.css';
 import React from 'react';
 import Heroimg from './Heroimg';
-import enlightened from './assets/images/enlightened.jpg';
-import strongwoman from './assets/images/strongwoman.jpg';
 import Cardsui from './Cardsui';
 import AnotherPage from './Cardsui2';
-import './App.css';
+import Announcements from './Announcements';
+import frontPage from './assets/images/frontPage.png';
+import strongwoman from './assets/images/strongwoman.jpg';
 
 
 
@@ -15,7 +16,7 @@ export default function Main(){
       <div id='heroImage'>
       <Heroimg 
       title="JUSTICE BEGINS WHERE INEQUALITY ENDS" 
-      img={enlightened} alt="loading"/>
+      img={frontPage} alt="loading"/>
       </div>
       <div id='cardsPageone'>
       <Cardsui/>
@@ -33,32 +34,8 @@ export default function Main(){
       <Heroimg img={strongwoman}/>
       </div>
       <div id='thirdpagetext'>
-        <div className='announcements'>
-          <h1>ANNOUNCEMENTS</h1>
-          <h4>LATEST EVENTS</h4>
-          <span>
-            Lorem21 ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-          </span>
-        </div>
-        <div className='announcements'>
-          <h4>LATEST EVENTS</h4>
-          <span>
-            Lorem21 ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-          </span>
-        </div>
-        <div className='announcements'>
-          <h4>LATEST EVENTS</h4>
-          <span>
-            Lorem21 ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-          </span>
-        </div>
-        <div className='announcements'>
-          <h4>LATEST EVENTS</h4>
-          <span>
-            Lorem21 ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-          </span>
-          </div>
-          </div>
+        <Announcements/>
+      </div>
     </section>
     </main>
   )

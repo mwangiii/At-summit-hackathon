@@ -5,7 +5,7 @@
 }
 
 .navbar {
-  z-index: 1 !important;
+  z-index: 5 !important;
   position: fixed !important;
   display: flex !important;
   align-items: center !important;
@@ -39,9 +39,9 @@
   font-family: 'Cormorant' !important;
 }
 
-.navbar-link a {
+.navbar-link a{
   font-family: 'sans-serif' !important;
-  font-size: 1rem !important;
+  font-size: 1.5rem !important;
   font-weight: bold !important;
   text-decoration: none !important;
   color: black !important;
