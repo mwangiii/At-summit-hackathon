@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const HeroinCard = ({ id, img, name, description }) => {
+
+
+const HeroinCard = ({ id, name, description}) => {
   return (
     <Link className='Link' to={`/heroins/${id}`}>
-      <img src={img} alt='heroin' className='heroinImg' />
-      <h3 className='heroinName'>{name}</h3>
-      <p className='heroinDescription'>{description}</p>
+      <div id='heroinCard'>   
+        <h3 id='heroinName'> MEET {name}</h3>
+        <p id='heroinDescription'>{description}</p>
+      </div>
     </Link>
   );
 };

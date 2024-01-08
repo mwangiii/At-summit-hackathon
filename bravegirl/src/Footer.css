@@ -7,6 +7,8 @@
   align-items: flex-end;
   padding: 20px !important;
   background-color: teal !important;
+  position: relative !important;
+  bottom: 0;
   }
 
 .footer-socials{
@@ -17,7 +19,12 @@
   font-size: 2.3em !important;
   color: black !important;
 }
-
+#footer {
+  width: 100%;
+  background-color: #f1f1f1; /* Add your preferred background color */
+  text-align: center;
+  padding: 10px;
+}
 
 .footer-text{
   width: 100% !important;
