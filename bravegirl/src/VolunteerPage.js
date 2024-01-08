@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './Volunteer.css';
-import { useNavigate } from 'react-router-dom';
 import Heroimage from './Heroimg';
 import strongwoman from './assets/images/strongwoman.jpg';
+import Swal from 'sweetalert2';
 
 
 const VolunteerForm = ({ isProfessional }) => {
@@ -12,7 +12,6 @@ const VolunteerForm = ({ isProfessional }) => {
     profession: '',
     otherProfession: '',
   });
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -20,15 +19,50 @@ const VolunteerForm = ({ isProfessional }) => {
       [name]: value,
     }));
   };
-
-  const navigate = useNavigate();
+  const validateForm = () => {
+    if (!formData || typeof formData !== 'object') {
+      alert('Form data is missing or not an object.');
+      return false;
+    }
+  
+    const firstName = formData.firstName?.trim();
+    const secondName = formData.secondName?.trim();
+    const email = formData.email?.trim();
+    const date = formData.date?.trim();
+    const profession = formData.profession?.trim();
+  
+    if (!firstName || !secondName || !email || !date || !profession) {
+      alert('Please fill in all required fields.');
+      return false;
+    }
+  
+    return true; // Form is valid
+  };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/Success');
-    console.log('Form submitted!', formData);
+  
+    if (validateForm()) {
+    document.body.classList.add('overlay');
+  
+    Swal.fire({
+      title: 'Thank you for your interest!',
+      text: 'We will get back to you shortly.',
+      customClass: {
+        popup: 'custom-popup-class',
+        title: 'custom-title-class',
+        content: 'custom-content-class',
+        confirmButton: 'custom-confirm-button-class',
+      },
+      showConfirmButton: true,
+    }).then(() => {
+      document.body.classList.remove('overlay');
+    });
+  }
   };
-
+  
+  
   return (
     <div id='volunteerPage' >
       {/* <h1 id='volunteerHeader'>Volunteer with us</h1> */}

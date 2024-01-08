@@ -50,7 +50,7 @@ class NavBar extends Component {
           <Link to="/volunteer">Volunteer</Link>
           </span>
           <span className="navbar-link">
-          <Link to="/about us">ABOUT US</Link>
+          <Link to="/about us">About Us</Link>
           </span>
         </div>
         <div className="mobile-view" onClick={this.handleClick}>
