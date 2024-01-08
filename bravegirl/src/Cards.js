@@ -1,12 +1,13 @@
 import React from "react";
+
 import "./Cards.css"
 
 function Card(props){
   return (
     <div className="card"> 
-      <h3>{props.heading}</h3>
+      <h3 id="cardoneHeading">{props.heading}</h3>
       <div className="cards">
-        <span>{props.span}</span>
+        <span id="cardoneSpan">{props.span}</span>
       </div>
     </div>
   );

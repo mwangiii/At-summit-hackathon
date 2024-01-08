@@ -5,7 +5,7 @@
 }
 
 .navbar {
-  z-index: 1 !important;
+  z-index: 5 !important;
   position: fixed !important;
   display: flex !important;
   align-items: center !important;
@@ -13,7 +13,7 @@
   margin-bottom: 1000px !important;
   padding-top: 1px !important;
   padding-bottom: 10px !important;
-  width: 100% !important;
+  max-width: 100% !important;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
@@ -32,16 +32,16 @@
 
 .navbar-brand {
   font-weight: bolder !important;
-  font-size: 4em !important;
+  font-size: 3rem !important;
   top: 0 !important;
   text-decoration: none !important;
   color: black !important;
   font-family: 'Cormorant' !important;
 }
 
-.navbar-link a {
-  font-family: ' sans-serif' !important;
-  font-size: 20px !important;
+.navbar-link a{
+  font-family: 'sans-serif' !important;
+  font-size: 1.5rem !important;
   font-weight: bold !important;
   text-decoration: none !important;
   color: black !important;

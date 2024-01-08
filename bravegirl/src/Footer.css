@@ -7,10 +7,11 @@
   align-items: flex-end;
   padding: 20px !important;
   background-color: teal !important;
+  bottom: 0 !important;
   }
 
 .footer-socials{
-  border: 1px solid green !important;
+  /* border: 1px solid green !important; */
   width: 20% !important; 
   display: flex;
   justify-content: space-evenly;
