@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import Payment from './Paymentui';
 import Main from './Main';
 import HeroinList from './Heroins';
+import Success from './Success';
 
 
 // function that returns the landing page
@@ -20,6 +21,7 @@ function App() {
           <Route path='/donate' element={<Donate/>}/>
           <Route path='/volunteer' element={<Volunteer isProfessional={true}/>}/>
           <Route path='/heroins' element={<HeroinList/>}/>
+          <Route path='/success' element={<Success/>}/>
           </Routes>   
         <Footer/>
       </div>

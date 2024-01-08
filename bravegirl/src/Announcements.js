@@ -1,6 +1,7 @@
 import React from "react";
 import './Announcements.css';
 
+
 export default function Announcements(){
   return(
     <>
