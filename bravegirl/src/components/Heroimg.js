@@ -1,6 +1,5 @@
-
 import React from "react";
-import "./Heroimg.css";
+import "../assets/css/Heroimg.css";
 
 
 export default function Heroimg(props) {

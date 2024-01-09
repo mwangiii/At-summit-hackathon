@@ -1,7 +1,6 @@
 import React from "react";
-// import samburugirls from "./assets/images/samburugirls.jpg";
-import "./Cards.css";
-import Card from "./Cards";
+import "./assets/css/Cards.css";
+import Card from "./components/Cards";
 
 
 

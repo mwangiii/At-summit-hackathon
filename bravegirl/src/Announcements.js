@@ -1,5 +1,5 @@
 import React from "react";
-import './Announcements.css';
+import './assets/css/Announcements.css';
 
 
 export default function Announcements(){

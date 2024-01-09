@@ -1,7 +1,7 @@
 // Import the Card component
 import React from "react";
-import Card2 from "./Cards2"; 
-import "./Cardsui2.css";
+import Card2 from "./components/Cards2"; 
+import "./assets/css/Cardsui2.css";
 import ussdCard from './assets/images/ussdCard.jpg';
 import volunteerPic from './assets/images/volunteerPic.jpg';
 import femaleHero from './assets/images/femaleHero.jpg';

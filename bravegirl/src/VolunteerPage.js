@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './Volunteer.css';
-import Heroimage from './Heroimg';
+import './assets/css/Volunteer.css';
+import Heroimage from './components/Heroimg';
 import strongwoman from './assets/images/strongwoman.jpg';
 import Swal from 'sweetalert2';
 

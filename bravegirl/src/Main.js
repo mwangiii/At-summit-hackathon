@@ -1,6 +1,6 @@
-import './App.css';
+import './assets/css/App.css';
 import React from 'react';
-import Heroimg from './Heroimg';
+import Heroimg from './components/Heroimg';
 import Cardsui from './Cardsui';
 import AnotherPage from './Cardsui2';
 import Announcements from './Announcements';

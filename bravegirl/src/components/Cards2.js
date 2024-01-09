@@ -1,5 +1,5 @@
 import React from "react";
-import "./Cardsui2.css"
+import "../assets/css/Cardsui2.css";
 
 
 function Card2(props){
