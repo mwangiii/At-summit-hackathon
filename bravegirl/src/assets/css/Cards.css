@@ -16,9 +16,13 @@
   justify-content: center;
   align-items: center;
   border-radius: 20px;
+  cursor: pointer;
   
 }
-
+.col:hover{
+  box-shadow: 6px 6px 6px 4px rgba(0,0,0,0.75);
+  transition: 0.9ms ease-in-out; 
+}
 #col-1,
 #col-3{
   background-color:teal;

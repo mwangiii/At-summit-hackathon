@@ -1,31 +1,34 @@
 .Footer {
   font: 1em sans-serif;
-  /* border: 1px solid black !important; */
+  margin: auto !important;
   width: 100% !important;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   padding: 20px !important;
   background-color: teal !important;
-  bottom: 0 !important;
+  position: relative !important;
+  bottom: 0;
   }
 
 .footer-socials{
-  /* border: 1px solid green !important; */
   width: 20% !important; 
   display: flex;
   justify-content: space-evenly;
-  /* justify-content: flex-end; */
   margin-bottom: 10px !important;
   font-size: 2.3em !important;
   color: black !important;
 }
-
+#footer {
+  width: 100%;
+  background-color: #f1f1f1; /* Add your preferred background color */
+  text-align: center;
+  padding: 10px;
+}
 
 .footer-text{
   width: 100% !important;
   background-color: teal !important;
-  /* position: absolute !important; */
   text-align: center !important;
   right: 0 !important;
   padding: 15px !important;

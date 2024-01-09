@@ -21,6 +21,7 @@
 .cardTwo{
   padding-inline: 9px !important;
   padding-bottom: 10px !important;
+  /* position: fixed; */
 }
 
 #cardImage{
@@ -28,6 +29,13 @@
   height: 300px !important;
   width: 100% !important;
   border-radius: 15px;
+}
+#cardImage:hover{
+  width: 102% !important;
+  height: 310px !important;
+  overflow:  hidden !important;
+  transition: 0.9ms ease-in !important;
+  cursor: pointer !important;
 }
 
 #cardHeading{

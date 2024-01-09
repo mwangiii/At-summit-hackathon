@@ -1,8 +1,8 @@
-import './App.css';
+import './assets/css/App.css';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import Volunteer from './VolunteerPage';
-import Donate from './DonatePage';
+// import Donate from './DonatePage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import Payment from './Paymentui';
 import Main from './Main';
@@ -17,9 +17,10 @@ function App() {
         <NavBar/>
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='/donate' element={<Donate/>}/>
+          <Route path='/donate' element={<Volunteer/>}/>
           <Route path='/volunteer' element={<Volunteer isProfessional={true}/>}/>
           <Route path='/heroins' element={<HeroinList/>}/>
+          <Route path='About us' element={<Main/>}/>
           </Routes>   
         <Footer/>
       </div>
