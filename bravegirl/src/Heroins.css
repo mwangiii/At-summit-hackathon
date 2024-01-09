@@ -1,0 +1,32 @@
+/* styling for Heroincard.js */
+#heroinCard{
+  border: 1px solid red;
+  width: 500px !important;
+  height: 500px !important;
+  margin-right: 100px !important;
+}
+.Link{  
+  text-decoration: none !important;
+}
+#heroinListHeading{
+  text-align: center;
+  font-size: 30px;
+  color:teal;
+}
+
+/* styling for Heroins.js */
+#heroinListContainer {
+  display: flex;
+  overflow-x: auto;
+} 
+
+#scrollLeft,
+#scrollRight {
+  position: fixed;
+  top: 50%;
+  height: 30px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+

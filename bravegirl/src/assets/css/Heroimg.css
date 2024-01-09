@@ -1,3 +1,4 @@
+<<<<<<< HEAD:bravegirl/src/assets/css/Heroimg.css
 .Hero{
   position: relative !important;
   max-width:100% !important;
@@ -34,3 +35,40 @@
     font-size: 2rem !important;
   }
 }
+=======
+.Hero{
+  position: relative !important;
+  max-width:100% !important;
+  max-height: 100% !important;
+  top: 0 !important;
+}
+.Hero-image{
+  position: relative !important; 
+  width: 100% !important;
+  height: 100vh !important;
+}
+
+.Hero-text{
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%,-50%);
+  color: white !important;
+  text-align: center !important;
+  z-index: 1 !important;
+}
+
+#heroHeading{
+  font-size: 3.3rem !important;
+  font-weight: 900 !important;
+  font-family: sans-serif !important;
+  text-transform: uppercase !important;
+  margin-bottom: 1rem !important;
+}
+
+@media screen and (max-width: 768px){
+  .Hero-text h1{
+    font-size: 2rem !important;
+  }
+}
+>>>>>>> origin/update02:bravegirl/src/Heroimg.css

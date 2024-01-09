@@ -1,3 +1,4 @@
+<<<<<<< HEAD:bravegirl/src/assets/css/Cardsui2.css
 /* styling for Cardsui2.js */
 .cardsTwo{
   display: flex;
@@ -61,4 +62,61 @@
   .cardsui{
     display: none !important;
   }
+=======
+/* styling for Cardsui2.js */
+.cardsTwo{
+  display: flex;
+  flex-direction: row;
+  top: 190%; 
+  left: 13%;
+  transform: translate(-10%, -50%);
+  position:absolute;
+}
+
+.colTwo{
+  border-radius: 15px !important;
+  width: 400px !important;
+  background-color: teal;
+  /* height: 600px; */
+  margin: 10px !important;
+  color: black;
+}
+
+/* styling for cards2.js */
+.cardTwo{
+  padding-inline: 9px !important;
+  padding-bottom: 10px !important;
+}
+
+#cardImage{
+  padding: 0.5px !important;
+  height: 300px !important;
+  width: 100% !important;
+  border-radius: 15px;
+}
+
+#cardHeading{
+  font-size: 2rem !important;
+  margin-bottom: 10px !important;
+  text-align: center;
+  text-transform: uppercase !important;
+}
+
+#cardSpan{
+  font-size: 1rem;
+  text-align: center;
+
+}
+
+@media screen and (max-width: 768px){
+  .cardsTwo{
+    display: none !important;
+  }
+  .colTwo{
+    display: none !important;
+  }
+  .cardsui{
+    display: none !important;
+  }
+>>>>>>> origin/update02:bravegirl/src/Cardsui2.css
 }
