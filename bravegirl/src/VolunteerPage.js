@@ -140,6 +140,16 @@ const VolunteerForm = ({ isProfessional }) => {
             value={formData.address}
             onChange={handleChange}
           />
+          </div>
+          <div className="form-group">
+            <label htmlFor="county">County</label>
+            <input
+              type="text"
+              id="state"
+              name="state"
+              value={formData.state}
+              onChange={handleChange}
+              />
         </div>
         <div className="form-group">
           <label htmlFor="city">City</label>
@@ -148,16 +158,6 @@ const VolunteerForm = ({ isProfessional }) => {
             id="city"
             name="city"
             value={formData.city}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="state">State</label>
-          <input
-            type="text"
-            id="state"
-            name="state"
-            value={formData.state}
             onChange={handleChange}
           />
         </div>
