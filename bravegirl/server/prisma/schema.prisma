@@ -19,6 +19,8 @@ model User {
   updatedAt  DateTime @updatedAt
   blogs      Blog[]   // Add a relation to represent blogs authored by the user
   donations  Donation[] // Add a relation to represent donations made by the user
+  Volunteer  Volunteer?   @relation(fields: [volunteerId], references: [id])
+  volunteerId Int?    @unique
 }
 
 model Blog {
@@ -35,9 +37,31 @@ model VolunteerOpportunity {
   id          Int      @id @default(autoincrement())
   title       String
   description String
+  volunteers  Volunteer[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model Volunteer {
+  id          Int      @id @default(autoincrement())
+  User        User?
+  userId      Int?
+  name      String
+  email     String
+  phone     String
+  address   String
+  city      String
+  state     String
+  availability String
+  skills     Skill[]      @relation("VolunteerSkills")
+  interests  Interest[]   @relation("VolunteerInterests")
+  profession String
+  opportunityId Int
+  opportunity VolunteerOpportunity @relation(fields: [opportunityId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+ 
 
 model Donation {
   id          Int      @id @default(autoincrement())
@@ -46,5 +70,17 @@ model Donation {
   donorId     Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Skill {
+  id          Int          @id @default(autoincrement())
+  name        String
+  volunteers  Volunteer[]  @relation("VolunteerSkills")
+}
+
+model Interest {
+  id          Int          @id @default(autoincrement())
+  name        String
+  volunteers  Volunteer[]  @relation("VolunteerInterests")
 }
 
