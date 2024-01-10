@@ -8,9 +8,16 @@ import Swal from 'sweetalert2';
 const VolunteerForm = ({ isProfessional }) => {
   const [formData, setFormData] = useState({
     name: '',
-    date: '',
+    email: '',
+    phone: '',
+    address: '',
+    city: '',
+    state: '',
+    availability: '',
+    skills: '',
+    interests: '',
     profession: '',
-    otherProfession: '',
+    opportunity: '',
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,13 +32,14 @@ const VolunteerForm = ({ isProfessional }) => {
       return false;
     }
   
-    const firstName = formData.firstName?.trim();
-    const secondName = formData.secondName?.trim();
+    const name = formData.name?.trim();
+    // const secondName = formData.secondName?.trim();
     const email = formData.email?.trim();
-    const date = formData.date?.trim();
+    // const date = formData.date?.trim();
+    const phone = formData.phone?.trim();
     const profession = formData.profession?.trim();
   
-    if (!firstName || !secondName || !email || !date || !profession) {
+    if (!name || !email || !phone || !profession) {
       alert('Please fill in all required fields.');
       return false;
     }
@@ -40,26 +48,46 @@ const VolunteerForm = ({ isProfessional }) => {
   };
   
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (validateForm()) {
-    document.body.classList.add('overlay');
-  
-    Swal.fire({
-      title: 'Thank you for your interest!',
-      text: 'We will get back to you shortly.',
-      customClass: {
-        popup: 'custom-popup-class',
-        title: 'custom-title-class',
-        content: 'custom-content-class',
-        confirmButton: 'custom-confirm-button-class',
-      },
-      showConfirmButton: true,
-    }).then(() => {
+      document.body.classList.add('overlay');
+
+      // Make the API call
+      const response = await fetch('http://localhost:3000/api/v1/volunteer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // If the API call was successful, show the success message
+        Swal.fire({
+          title: 'Thank you for your interest!',
+          text: 'We will get back to you shortly.',
+          customClass: {
+            popup: 'custom-popup-class',
+            title: 'custom-title-class',
+            content: 'custom-content-class',
+            confirmButton: 'custom-confirm-button-class',
+          },
+          showConfirmButton: true
+        });
+      } else {
+        // If the API call failed, show an error message
+        Swal.fire({
+          title: 'Error',
+          text: 'An error occurred while saving the form data.',
+          icon: 'error',
+        });
+      }
+
+      // Remove the overlay
       document.body.classList.remove('overlay');
-    });
-  }
+    }
   };
   
   
@@ -72,23 +100,14 @@ const VolunteerForm = ({ isProfessional }) => {
       </div>
       <div id='volunteerForm'>
         <div className="form-group">
-          <label htmlFor="name">First Name</label>
+          <label htmlFor="name">Full Name</label>
           <input
             type="text"
             id="firstName"
-            name="firstName"
+            name="name"
             autoComplete='first name'
-            value={formData.firstname}
+            value={formData.name}
             onChange={handleChange}
-          />
-          <label htmlFor="name">Second Name</label>
-          <input
-            type="text"
-            id="secondName"
-            name="secondName"
-            value={formData.secondname}
-            onChange={handleChange}
-            autoComplete='second name'
           />
         </div>
         <div className="form-group">
@@ -99,19 +118,47 @@ const VolunteerForm = ({ isProfessional }) => {
             name="email"
             autoComplete='email'
             value={formData.email}
-            
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="date">Date of Availability</label>
+          <label htmlFor="phone">Phone</label>
           <input
-            type="date"
-            id="date"
-            name="date"
-            value={formData.date}
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
             onChange={handleChange}
-            placeholder="Select a date"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="address">Address</label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="city">City</label>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="state">State</label>
+          <input
+            type="text"
+            id="state"
+            name="state"
+            value={formData.state}
+            onChange={handleChange}
           />
         </div>
 
