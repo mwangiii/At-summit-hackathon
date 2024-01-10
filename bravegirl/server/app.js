@@ -3,20 +3,34 @@ const session = require('express-session');
 require('dotenv').config();
 const passport = require('passport');
 
-// create express app
+// Create an Express application
 const app = express();
+// parse Json Bodies
+app.use(express.json());
 // Import route files
-
+const bodyParser = require('body-parser');
 const usersRoutes = require('./routes/v1/users');
 const blogRoutes = require('./routes/v1/blog');
 const volunteeropportunityRoutes = require('./routes/v1/volunteeropportunity');
 const VolunteerRoutes = require('./routes/v1/volunteer');
+const DonationRoutes = require('./routes/v1/donation');
 
+app.use(bodyParser.json());
+// add logging middleware
+app.use((req, res, next) => {
+  const start = Date.now();
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    console.log(`${req.method} ${req.originalUrl} ${res.statusCode} ${duration}ms`);
+  });
+  next(); 
+});
 // mount route files
 app.use('/api/v1/users/', usersRoutes);
 app.use('/api/v1/blog/', blogRoutes);
 app.use('/api/v1/volunteeropportunity/', volunteeropportunityRoutes);
 app.use('/api/v1/volunteer/', VolunteerRoutes);
+app.use('/api/v1/donation/', DonationRoutes);
 
 // home route
 app.get('/', (req, res) => {
@@ -39,16 +53,7 @@ app.use(session({
 // use passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
-// parse Json Bodies
-app.use(express.json());
 
-// add logging middleware
-app.use((req, res, next) => {
-    const start = Date.now();
-    res.on('finish', () => {
-      const duration = Date.now() - start;
-      console.log(`${req.method} ${req.originalUrl} ${res.statusCode} ${duration}ms`);
-    });
-    next(); 
-  });
+
+
 module.exports = app;
