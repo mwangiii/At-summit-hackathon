@@ -5,8 +5,8 @@ import './assets/css/Announcements.css';
 export default function Announcements(){
   return(
     <>
+    <h1 id="announcmentsHeading">ANNOUNCEMENTS</h1>
     <div className='announcements'>
-          <h1 id="announcmentsHeading">ANNOUNCEMENTS</h1>
           <h3 id="announcmentsH3">FUNDRAISER</h3>
           <span>
           Save the date! Our annual fundraising gala is just around the corner. Join us for an evening of inspiration, entertainment, and opportunities to contribute to our mission. Your support ensures that every girl's voice is heard and valued.
