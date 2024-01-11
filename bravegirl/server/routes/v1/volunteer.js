@@ -30,51 +30,57 @@ router.post('/', async (req, res) => {
            where: {name: skill},
             create: {name: skill},
           }));
-        const volunteerInterests = interests.split(',');
 
+        const volunteerInterests = interests.split(',');
         const interestObjects = volunteerInterests.map(interest => ({
            where: { name: interest },
            create: { name: interest },
           }));
+
         // validate request
         if (!name || !email || !phone ) {
             return res.status(400).json({ error: 'Please provide all required information' });
         }
-        const volunteerData = {
-          name,
-          email,
-          phone,
-          address,
-          city,
-          state,
-          availability,
-          skills: {
-            connectOrCreate: skillObjects,
-          },
-          interests: {
-            connectOrCreate: interestObjects,
-          },
-          profession,
-        };
-
-          
-        if (opportunity && opportunity.id) {
-            volunteerData.opportunity = {
-                connect: {
-                    id: opportunity.id,
-                },
+        // check if volunteer already exists using email
+        const existingVolunteer = await prisma.volunteer.findUnique({
+            where: { email },
+        });
+        if (!existingVolunteer) {
+            const volunteerData = {
+              name,
+              email,
+              phone,
+              address,
+              city,
+              state,
+              availability,
+              skills: {
+                connectOrCreate: skillObjects,
+              },
+              interests: {
+                connectOrCreate: interestObjects,
+              },
+              profession,
             };
-        }
-
-        // create a new volunteer
-        const volunteer = await prisma.volunteer.create({
-            data: volunteerData,
-            include: {
-              skills: true,
+            if (opportunity && opportunity.id) {
+                volunteerData.opportunity = {
+                    connect: {
+                        id: opportunity.id,
+                    },
+                };
+            } 
+            // create a new volunteer
+            const volunteer = await prisma.volunteer.create({
+                data: volunteerData,
+                include: {
+                  skills: true,
               interests: true,
             },
-        });
-        res.status(200).json(volunteer);
+            });
+            res.status(200).json(volunteer);
+        } else { 
+            return res.status(400).json({ error: 'Volunteer already exists' });
+        }
     } catch (error) {
         console.error(error.message);
         res.status(400).json({ error: error.message });
@@ -83,7 +89,6 @@ router.post('/', async (req, res) => {
 });
 
 // update a volunteer
-
 router.put('/:id', async (req, res) => {
     try {
         const { id } = req.params;
