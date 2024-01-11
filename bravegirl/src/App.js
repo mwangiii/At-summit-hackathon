@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Main from './Main';
 import HeroinList from './Heroins';
 import Admin from './Admin';
+import AddStory from './components/Addstorypage';
 
 
 // function that returns the landing page
@@ -23,6 +24,7 @@ function App() {
           <Route path='/heroins' element={<HeroinList/>}/>
           <Route path='About us' element={<Main/>}/>
           <Route path='Admin' element={<Admin/>}/>
+          <Route path="/add-story" element={<AddStory />} />
           </Routes>   
         <Footer/>
       </div>

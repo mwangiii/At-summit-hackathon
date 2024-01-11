@@ -11,7 +11,20 @@ const prisma = new PrismaClient();
 // create volunteer
 router.post('/', async (req, res) => {
     try {
-        const { name, email, phone, address, city, state,  availability, skills, interests, profession, opportunity } = req.body;
+        const {
+            name,
+            email,
+            phone,
+            address = '',
+            city = '',
+            state = '',
+            availability = '',
+            skills = [],
+            interests = [],
+            profession = '',
+            opportunity,
+          } = req.body;
+
         const volunteerSkills = skills.split(',');
         const skillObjects = volunteerSkills.map(skill => ({
            where: {name: skill},
@@ -28,29 +41,30 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ error: 'Please provide all required information' });
         }
         const volunteerData = {
-            name,
-            email,
-            phone,
-            address,
-            city,
-            state,
-            availability,
-            skills: {
-              connectOrCreate: skillObjects,
-            },
-            interests: {
-              connectOrCreate: interestObjects,
-            },
-            profession,
-          };
+          name,
+          email,
+          phone,
+          address,
+          city,
+          state,
+          availability,
+          skills: {
+            connectOrCreate: skillObjects,
+          },
+          interests: {
+            connectOrCreate: interestObjects,
+          },
+          profession,
+        };
+
           
-          if (opportunity) {
-            volunteerData.opportunity = {
-              connect: {
-                id: opportunity.id,
-              },
-            };
-          }
+        if (opportunity) {
+          volunteerData.opportunity = {
+            connect: {
+              id: opportunity.id,
+            },
+          };
+        }
 
         // create a new volunteer
         const volunteer = await prisma.volunteer.create({
@@ -63,6 +77,7 @@ router.post('/', async (req, res) => {
         res.status(200).json(volunteer);
     } catch (error) {
         console.error(error.message);
+        res.status(400).json({ error: error.message });
         res.status(500).json({ error: 'Failed to create a new volunteer' });
     }
 });

@@ -36,3 +36,7 @@
   font-family: sans-serif !important;
   margin-top: 100px !important;; 
 }
+
+.StoryFooter {
+  height: 50px; /* Adjust this value based on your needs */
+}

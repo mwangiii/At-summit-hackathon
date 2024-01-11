@@ -34,7 +34,7 @@ class NavBar extends Component {
     const navbarClass = `navbar ${visible ? "visible" : ""}`;
 
     return (
-      <nav className={navbarClass}>
+      <nav style={{ zIndex: 1 }} className={navbarClass}>
         <a className="navbar-brand" href="/">
           BraveGirls
         </a>

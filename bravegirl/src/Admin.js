@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
 import AdminImage from './assets/images/Adminimage.jpeg';
 import './assets/css/Admin.css';
@@ -16,7 +17,9 @@ export default function Admin() {
 
           <div className='adminButton'>
             <img className='adminImage' src={AdminImage} alt="loading" />
-            <button className='addButton'>Add Heroin Story</button>
+            <button className='addButton'>
+                <Link to="/add-story">Add Heroin Story</Link>
+            </button>
           </div>
         </div>
       </div>
