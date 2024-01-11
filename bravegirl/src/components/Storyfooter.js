@@ -1,8 +1,8 @@
 import React from "react";
-import "./assets/css/StoryFooter.css";
+// import "./assets/css/StoryFooter.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitterSquare, faFacebookSquare, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { getFooterCopy, getFullYear } from "./utils";
+import { getFooterCopy, getFullYear } from "../utils";
 
 export default function StoryFooter() {
     return (

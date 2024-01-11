@@ -16,7 +16,10 @@
   display: flex;
   justify-content: center;
 }
-
+.linkAdd {
+  text-decoration: none !important;
+  color: white !important;
+}
 .adminButton {
   display: flex;
   flex-direction: column;
