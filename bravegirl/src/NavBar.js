@@ -52,6 +52,9 @@ class NavBar extends Component {
           <span className="navbar-link">
           <Link to="/about us">About Us</Link>
           </span>
+          <span className="navbar-link">
+          <Link to="/Admin">Admin</Link>
+          </span>
         </div>
         <div className="mobile-view" onClick={this.handleClick}>
           <FontAwesomeIcon

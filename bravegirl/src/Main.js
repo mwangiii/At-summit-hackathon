@@ -8,7 +8,6 @@ import frontPage from './assets/images/frontPage.png';
 import strongwoman from './assets/images/strongwoman.jpg';
 
 
-
 export default function Main(){
   return(
     <main>

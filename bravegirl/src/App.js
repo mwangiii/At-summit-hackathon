@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import Payment from './Paymentui';
 import Main from './Main';
 import HeroinList from './Heroins';
+import Admin from './Admin';
 
 
 // function that returns the landing page
@@ -17,10 +18,11 @@ function App() {
         <NavBar/>
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='/donate' element={<Volunteer/>}/>
+          <Route path='/donate' element={<Volunteer isProfessional={true}/>}/>
           <Route path='/volunteer' element={<Volunteer isProfessional={true}/>}/>
           <Route path='/heroins' element={<HeroinList/>}/>
           <Route path='About us' element={<Main/>}/>
+          <Route path='Admin' element={<Admin/>}/>
           </Routes>   
         <Footer/>
       </div>
