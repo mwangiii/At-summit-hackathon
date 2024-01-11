@@ -19,8 +19,8 @@ router.post('/', async (req, res) => {
             city = '',
             state = '',
             availability = '',
-            skills = [],
-            interests = [],
+            skills = '',
+            interests = '',
             profession = '',
             opportunity,
           } = req.body;
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
            create: { name: interest },
           }));
         // validate request
-        if (!name || !email || !phone || !city  || !availability ) {
+        if (!name || !email || !phone ) {
             return res.status(400).json({ error: 'Please provide all required information' });
         }
         const volunteerData = {
@@ -58,12 +58,12 @@ router.post('/', async (req, res) => {
         };
 
           
-        if (opportunity) {
-          volunteerData.opportunity = {
-            connect: {
-              id: opportunity.id,
-            },
-          };
+        if (opportunity && opportunity.id) {
+            volunteerData.opportunity = {
+                connect: {
+                    id: opportunity.id,
+                },
+            };
         }
 
         // create a new volunteer
@@ -109,7 +109,7 @@ router.put('/:id', async (req, res) => {
         res.status(200).json(updatedVolunteer);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Failed to update volunteer' });
+        return res.status(500).json({ error: 'Failed to update volunteer' });
     }
 });
 
