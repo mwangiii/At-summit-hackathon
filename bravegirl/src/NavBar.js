@@ -3,12 +3,10 @@ import './assets/css/NavBar.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faWindowClose } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
-// import Donate from './Donate';
 
 class NavBar extends Component {
   state = { clicked: false, visible: false };
 
-  
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
   }
@@ -24,10 +22,15 @@ class NavBar extends Component {
     this.setState({ visible: isScrolled });
   };
 
-  handleClick = () => {
+  // handleClick = () => {
+  //   this.setState({ clicked: !this.state.clicked });
+  // }
+
+  handleClick = (e) => {
+    e.preventDefault();
     this.setState({ clicked: !this.state.clicked });
   }
-
+  
   render() {
     const { clicked, visible } = this.state;
     const navbarTextClass = clicked ? "active" : "";
@@ -39,21 +42,23 @@ class NavBar extends Component {
           BraveGirls
         </a>
         <div className={navbarTextClass} id="navbarText">
-          <span className="navbar-link">
-            {/* A link to the page Donate */}
+        <span className={`navbar-link ${clicked ? "disabled" : ""}`}>
             <Link to="/donate">Donate</Link>
           </span>
-          <span className="navbar-link">
-          <Link to="/heroins">Heroins</Link>
+           <span className={`navbar-link ${clicked ? "disabled" : ""}`}>
+            <Link to="/heroins">Heroins</Link>
           </span>
-          <span className="navbar-link">
-          <Link to="/volunteer">Volunteer</Link>
+          <span className={`navbar-link ${clicked ? "disabled" : ""}`}>
+            <Link to="/volunteer">Volunteer</Link>
           </span>
-          <span className="navbar-link">
-          <Link to="/about us">About Us</Link>
+           <span className={`navbar-link ${clicked ? "disabled" : ""}`}>
+            <Link to="/about us">About Us</Link>
+          </span>
+           <span className={`navbar-link ${clicked ? "disabled" : ""}`}>
+            <Link to="/Admin">Admin</Link>
           </span>
         </div>
-        <div className="mobile-view" onClick={this.handleClick}>
+        <div className={`mobile-view ${clicked ? "clickable" : ""}`} onClick={this.handleClick}>
           <FontAwesomeIcon
             icon={clicked ? faBars : faWindowClose}
             id="bar"

@@ -10,12 +10,12 @@
 
 #volunteerImg img{
   width:50vw !important;
-  height: 85vh !important;
+  height: 110vh !important;
 }
 .volunteerImg ::after{
   content: "" !important;
   width: 100% !important;
-  height: 85% !important;
+  height: 110% !important;
   position: absolute !important;
   top: 0 !important;
   left: 1px !important;
@@ -26,7 +26,7 @@
   padding-inline: 20px !important;
   width: 50vw !important;
   padding-block: 20px !important;
-  height: 85vh !important;
+  height: 125vh !important;
   background-color: rgba(245, 245, 245, 0.933) !important;
 }
 .form-group{

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 // dispay payment successfull message if payment is successfull
 // display payment unsuccessfull message if payment fails
@@ -8,20 +8,20 @@ const Success = ({ paymentStatus }) => {
   let message;
 
   switch (paymentStatus) {
-    case "success":
-      message = "Payment successful";
+    case 'success':
+      message = 'Payment successful';
       break;
-    case "failure":
-      message = "Payment unsuccessful";
+    case 'failure':
+      message = 'Payment unsuccessful';
       break;
-    case "pending":
-      message = "Payment pending";
+    case 'pending':
+      message = 'Payment pending';
       break;
-    case "canceled":
-      message = "Payment canceled";
+    case 'canceled':
+      message = 'Payment canceled';
       break;
     default:
-      message = "Unknown payment status";
+      message = 'Unknown payment status';
   }
 
   return <div>{message}</div>;
