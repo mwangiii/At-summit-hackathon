@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import EasyMDE from 'easymde';
-// import StoryFooter from './Storyfooter';
+import '../assets/css/Addstorypage.css';
 import 'easymde/dist/easymde.min.css';
 
 export default function AddStory() {
@@ -28,7 +28,7 @@ export default function AddStory() {
         <div style={{ marginTop: '50px' }}>
             <textarea ref={markdownEditor} />
 
-            <button onClick={handleSave}>Save</button>
+            <button  id='Addbutton' onClick={handleSave}>Save</button>
         </div>
     );
 }
