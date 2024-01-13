@@ -47,7 +47,7 @@ model Volunteer {
   User        User?
   userId      Int?
   name      String
-  email     String
+  email     String     @unique
   phone     String
   address   String?
   city      String?

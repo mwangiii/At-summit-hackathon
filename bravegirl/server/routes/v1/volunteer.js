@@ -62,7 +62,7 @@ router.post('/', async (req, res) => {
               },
               profession,
             };
-            if (opportunity && opportunity.id) {
+            if (opportunity) {
                 volunteerData.opportunity = {
                     connect: {
                         id: opportunity.id,
