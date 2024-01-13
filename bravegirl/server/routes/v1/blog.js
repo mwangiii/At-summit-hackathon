@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 // create blog post
 router.post('/', async (req, res) => {
     try {
-        const { title, content } = req.body;
+        const { title, content, authorId } = req.body;
         // validate request
         if (!title || !content) {
             return res.status(400).json({ error: 'Please provide a title and content for your post' });
@@ -18,6 +18,7 @@ router.post('/', async (req, res) => {
             data: {
                 title,
                 content,
+                authorId
             },
         });
         res.status(200).json(post);
@@ -32,6 +33,9 @@ router.get('/', async (req, res) => {
     try {
         const posts = await prisma.post.findMany();
         res.status(200).json(posts);
+        if (!posts) {
+            return res.status(404).json({ error: 'All quiet at the database, No posts Yet!' });
+        }
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Failed to get all posts' });
