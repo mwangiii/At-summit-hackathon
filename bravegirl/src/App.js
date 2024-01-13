@@ -10,26 +10,25 @@ import HeroinList from './Heroins';
 import Admin from './Admin';
 import AddStory from './components/Addstorypage';
 
-
 // function that returns the landing page
-function App() {
+function App () {
   return (
     <Router>
       <div>
-        <NavBar/>
+        <NavBar />
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='/donate' element={<Volunteer isProfessional={true}/>}/>
-          <Route path='/volunteer' element={<Volunteer isProfessional={true}/>}/>
-          <Route path='/heroins' element={<HeroinList/>}/>
-          <Route path='About us' element={<Main/>}/>
-          <Route path='Admin' element={<Admin/>}/>
-          <Route path="/add-story" element={<AddStory />} />
-          </Routes>   
-        <Footer/>
+          <Route path='/donate' element={<Volunteer isProfessional />} />
+          <Route path='/volunteer' element={<Volunteer isProfessional />} />
+          <Route path='/heroins' element={<HeroinList />} />
+          <Route path='About us' element={<Main />} />
+          <Route path='Admin' element={<Admin />} />
+          <Route path='/add-story' element={<AddStory />} />
+        </Routes>
+        <Footer />
       </div>
     </Router>
-  )
+  );
 }
 
 export default App;
