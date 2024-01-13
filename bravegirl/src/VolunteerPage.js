@@ -77,9 +77,15 @@ const VolunteerForm = ({ isProfessional }) => {
       } else {
         // If the API call failed, show an error message
         Swal.fire({
-          title: 'Error',
-          text: 'An error occurred while saving the form data.',
-          icon: 'error'
+          title: 'Error!',
+          text: 'Something went wrong.',
+            icon: 'error',
+          confirmButtonText: 'OK',
+          customClass: {
+            icon: 'error-icon-class',
+            popup: 'custom-popup-class',
+            confirmButton: 'error-confirm-button-class'
+          }
         });
       }
 

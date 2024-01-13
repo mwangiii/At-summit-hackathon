@@ -90,7 +90,20 @@ input{
   padding: 15px !important;
   margin-top: 55px !important;
 }
-
+.error-confirm-button-class{
+  /* Your styles for the "error" button */
+  background-color: white !important;
+  color: teal !important;
+  font-size: larger !important;
+  font-weight: 1000 !important;
+  padding: 15px !important;
+  margin-top: 55px !important;
+}
+.error-icon-class{
+  /* Your styles for the "error" icon */
+  color: teal !important;
+  font-size: 10px !important;
+}
 .overlay {
   position: fixed;
   top: 0;
